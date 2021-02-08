@@ -4,7 +4,7 @@ def traverse_graph(graph, start_node):
 	'''
 	Carries out Dijkstra's algorithm
 	:param graph: Graph object
-	:start_node: Node object, the node you are starting from
+	:param start_node: Node object, the node you are starting from
 	:returns: A copy of the graph, whose node objects have cost and previous fields
 	'''
 
@@ -40,8 +40,8 @@ def find_shortest_path(graph, start_node, end_node):
 	'''
 	Finds the shortest path from a node to another node
 	:param graph: A Graph object
-	:start_node: A Node object
-	:end_node: A Node object
+	:param start_node: A Node object
+	:param end_node: A Node object
 	:returns: List of Strings, the names of the nodes that make up the shortest path, starts with start_node and ends with end_node
 	'''
 	graph = traverse_graph(graph, start_node)

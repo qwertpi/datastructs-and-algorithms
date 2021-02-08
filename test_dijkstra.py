@@ -23,6 +23,7 @@ def test_purity():
 	assert g.get_node("B").get_data("previous").name == "S"
 
 def test_small_graph():
+	#graph from https://www.codingame.com/playgrounds/1608/shortest-paths-with-dijkstras-algorithm/dijkstras-algorithm
 	g = Graph()
 
 	nodes = list(map(g.add_node, ("A", "B", "C", "D", "E")))

@@ -50,7 +50,7 @@ class Node():
 	def get_edge_weight(self, node):
 		'''
 		Gets the weight of the edge connecting self to another node
-		:param node: Node object, the node the edge you are interested points towards
+		:param node: Node object, the node the edge you are interested in points towards
 		:returns: Float or Int, the weight of the edge
 		'''
 		try:
