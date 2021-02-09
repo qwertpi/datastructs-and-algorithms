@@ -93,7 +93,7 @@ def test_large_graph():
 	E = g.add_node("E")
 	E.update_data("coord", (0, 0))
 
-	g.add_edge(A, B, 3)
+	g.add_edge(A, B, 6)
 	g.add_edge(A, D, 4)
 	g.add_edge(A, S, 7)
 	g.add_edge(B, H, 1)
@@ -109,6 +109,5 @@ def test_large_graph():
 	g.add_edge(I, J, 6)
 	g.add_edge(I, L, 4)
 	g.add_edge(I, K, 4)
-
 
 	assert find_shortest_path(g, S, E) == ["S", "B", "H", "G", "E"]
