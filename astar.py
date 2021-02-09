@@ -2,15 +2,15 @@ from math import inf
 from copy import deepcopy
 from functools import partial
 
-def manhattan_dist(start_node, node):
+def manhattan_dist(end_node, node):
 	'''
 	An example heuristic function. All heuristics must take these paramaters in this order
-	Calculates the manhattan distance between the start node and another node
-	:param start_node: Node object
+	Calculates the manhattan distance between the target node and another node
+	:param end_node: Node object
 	:param node: Node object
 	:returns: Int or Float
 	'''
-	return abs(start_node.get_data("coord")[0] - node.get_data("coord")[0]) + abs(start_node.get_data("coord")[1] - node.get_data("coord")[1])
+	return abs(end_node.get_data("coord")[0] - node.get_data("coord")[0]) + abs(end_node.get_data("coord")[1] - node.get_data("coord")[1])
 
 def traverse_graph(graph, start_node, end_node, heuristic):
 	'''
@@ -18,7 +18,7 @@ def traverse_graph(graph, start_node, end_node, heuristic):
 	:param graph: Graph object
 	:param start_node: Node object, the node you are starting from
 	:param end_node: Node object, the node you want to end up at
-	:param heuristic: a function of the form f(start_node, node)
+	:param heuristic: a function of the form f(end_node, node)
 	:returns: A copy of the graph, whose node objects have cost and previous fields
 	'''
 
@@ -28,8 +28,8 @@ def traverse_graph(graph, start_node, end_node, heuristic):
 	start_node = graph.get_node(start_node.name)
 	end_node = graph.get_node(end_node.name)
 
-	#start node will always be the same
-	h = partial(heuristic, start_node)
+	#target node will always be the same
+	h = partial(heuristic, end_node)
 
 	unvisited = []
 	visited = []
@@ -40,8 +40,6 @@ def traverse_graph(graph, start_node, end_node, heuristic):
 		 unvisited.append(node)
 	start_node.update_data("g", 0)
 	start_node.update_data("f", h(start_node))
-
-	current = start_node
 	while True:
 		lowest_cost = min([node.get_data("f") for node in unvisited])
 		current = [node for node in unvisited if node.get_data("f") == lowest_cost][0]
@@ -65,7 +63,7 @@ def find_shortest_path(graph, start_node, end_node, heuristic=manhattan_dist):
 	:param graph: A Graph object
 	:param start_node: A Node object
 	:param end_node: A Node object
-	:param heuristic: a function of the form f(start_node, node), if not passed uses a built in Manhattan distance heuristic
+	:param heuristic: a function of the form f(end_node, node), if not passed uses a built in Manhattan distance heuristic
 	:returns: List of Strings, the names of the nodes that make up the shortest path, starts with start_node and ends with end_node
 	'''
 	graph = traverse_graph(graph, start_node, end_node, heuristic)
@@ -73,7 +71,6 @@ def find_shortest_path(graph, start_node, end_node, heuristic=manhattan_dist):
 	#we need the nodes in the copy with the same names as the nodes in the original
 	start_node = graph.get_node(start_node.name)
 	end_node = graph.get_node(end_node.name)
-
 	route = []
 	curr = end_node
 	route.append(curr)
