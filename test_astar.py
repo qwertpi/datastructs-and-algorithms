@@ -35,6 +35,7 @@ def test_purity():
 	assert g.get_node("B").get_data("previous").name == "S"
 
 
+#this graph takes 5 iterations through the while loop of Dijkstra but only 4 for A*
 def test_small_graph():
 	#graph from https://www.codingame.com/playgrounds/1608/shortest-paths-with-dijkstras-algorithm/dijkstras-algorithm
 	#coordinates are highly approximate
@@ -61,9 +62,10 @@ def test_small_graph():
 
 	assert find_shortest_path(g, C, E) == ["C", "A", "B", "E"]
 
+#this graph takes 13 iterations through the while loop of Dijkstra but only 6 for A*
 def test_large_graph():
 	#this is the graph from https://www.youtube.com/watch?v=GazC3A4OQTE
-	#Co-ordinates are based off measuring number of pixels between nodes in a screengrab of video so shoudln't be too far off
+	#Co-ordinates are based off measuring number of pixels between nodes in a screengrab of video so shouldn't be too far off
 	g = Graph()
 
 	S = g.add_node("S")

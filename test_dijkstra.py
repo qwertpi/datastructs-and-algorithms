@@ -56,7 +56,7 @@ def test_large_graph():
 	L = g.add_node("L")
 	E = g.add_node("E")
 
-	g.add_edge(A, B, 3)
+	g.add_edge(A, B, 6)
 	g.add_edge(A, D, 4)
 	g.add_edge(A, S, 7)
 	g.add_edge(B, H, 1)
